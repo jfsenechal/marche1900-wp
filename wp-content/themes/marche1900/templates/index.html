@@ -1,0 +1,37 @@
+<!-- wp:template-part {"slug":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--70)">
+	<!-- wp:heading {"level":1,"textAlign":"center","className":"is-style-engraved-sign"} -->
+	<h1 class="wp-block-heading has-text-align-center is-style-engraved-sign">Actualités</h1>
+	<!-- /wp:heading -->
+
+	<!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-query">
+		<!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|60"}}} -->
+			<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"16/9","style":{"border":{"radius":"5px"}}} /-->
+			<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"x-large"} /-->
+			<!-- wp:post-date {"fontSize":"small","style":{"typography":{"fontStyle":"italic","fontWeight":"400"},"elements":{"link":{"color":{"text":"var:preset|color|sage"}}}},"textColor":"sage"} /-->
+			<!-- wp:post-excerpt {"moreText":"Lire la suite"} /-->
+			<!-- wp:separator {"className":"is-style-wide"} -->
+			<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide"/>
+			<!-- /wp:separator -->
+		<!-- /wp:post-template -->
+
+		<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- wp:query-pagination-previous {"label":"Plus anciens"} /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next {"label":"Plus récents"} /-->
+		<!-- /wp:query-pagination -->
+
+		<!-- wp:query-no-results -->
+			<!-- wp:paragraph {"align":"center"} -->
+			<p class="has-text-align-center">Aucun article pour le moment.</p>
+			<!-- /wp:paragraph -->
+		<!-- /wp:query-no-results -->
+	</div>
+	<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer"} /-->

@@ -1,0 +1,292 @@
+/**
+ * Marche 1900 — interaction states and small refinements.
+ * Tokens come from theme.json; this file only covers what theme.json cannot:
+ * focus-visible rings, the pine navigation bar's hover/active states, the
+ * bilingual language switcher, and reduced-motion safety.
+ */
+
+/* ---- Accessible focus ring (keyboard only) ----------------------------- */
+:where(a, button, input, select, textarea, .wp-block-navigation-item__content):focus-visible {
+	outline: 2px solid var(--wp--preset--color--orange-deep, #9c5212);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+/* ---- Skip link --------------------------------------------------------- */
+.skip-link.screen-reader-text {
+	position: absolute;
+	left: -9999px;
+	z-index: 100000;
+}
+.skip-link.screen-reader-text:focus {
+	left: 6px;
+	top: 6px;
+	width: auto;
+	height: auto;
+	padding: 0.75rem 1rem;
+	background: var(--wp--preset--color--pine, #515f51);
+	color: var(--wp--preset--color--cream, #fff4de);
+	font-family: var(--wp--preset--font-family--metropolitain, serif);
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+/* ---- The pine navigation bar ------------------------------------------- */
+/* The header wraps the primary nav in a group with the `site-nav-bar` class. */
+.site-nav-bar a,
+.site-nav-bar .wp-block-navigation-item__content,
+.site-nav-bar .wp-block-navigation .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--cream, #fff4de);
+	text-decoration: none;
+	padding-bottom: 4px;
+	border-bottom: 2px solid transparent;
+	transition: color 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+		border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-nav-bar a:hover,
+.site-nav-bar .wp-block-navigation-item__content:hover,
+.site-nav-bar .current-menu-item > a,
+.site-nav-bar .wp-block-navigation-item.current-menu-item .wp-block-navigation-item__content,
+.site-nav-bar .wp-block-navigation-item.current_page_item .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--orange, #e88335);
+	border-bottom-color: var(--wp--preset--color--orange, #e88335);
+}
+.site-nav-bar a:focus-visible {
+	outline-color: var(--wp--preset--color--cream, #fff4de);
+}
+
+/* Mobile overlay menu sits on the pine ground; keep links readable. */
+.site-nav-bar .wp-block-navigation__responsive-container.is-menu-open {
+	background: var(--wp--preset--color--pine, #515f51);
+}
+
+/* Language switch, set apart from the main menu items. */
+.site-nav-bar .lang-link a,
+.site-nav-bar .lang-link .wp-block-navigation-item__content {
+	font-size: 0.8125rem;
+	letter-spacing: 0.08em;
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+.site-nav-bar .lang-link--current a,
+.site-nav-bar .lang-link--current .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--orange, #e88335);
+	font-weight: 700;
+}
+/* A hairline divider before the language pair, horizontal nav only. */
+@media (min-width: 600px) {
+	.site-nav-bar .lang-link--current {
+		margin-left: 0.5rem;
+		padding-left: 0.85rem;
+		border-left: 1px solid color-mix(in srgb, var(--wp--preset--color--cream, #fff4de) 35%, transparent);
+	}
+}
+
+/* ---- Section sub-navigation (menu_bis) --------------------------------- */
+/* The block-theme replacement for the legacy #menu_bis: a centered, flat
+   sage-beige pill of Metropolitain links for the "Le Marché" page cluster.
+   Pine labels, burnt-orange on hover, and a filled pine chip for the page
+   you are on. Wraps to two rows on narrow screens; FR/NL label lengths flex. */
+.section-nav {
+	display: flex;
+	justify-content: center;
+	margin-block: 0 var(--wp--preset--spacing--50, 2rem);
+}
+.section-nav__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.25rem;
+	margin: 0;
+	padding: 0.3rem;
+	list-style: none;
+	background: var(--wp--preset--color--beige, #dfdcbc);
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--sage, #8f9782) 60%, transparent);
+	border-radius: 999px;
+}
+.section-nav__item {
+	margin: 0;
+}
+.section-nav__link {
+	display: block;
+	padding: 0.5rem 1.15rem;
+	font-family: var(--wp--preset--font-family--metropolitain, serif);
+	font-size: var(--wp--preset--font-size--medium, 1.0625rem);
+	line-height: 1.2;
+	letter-spacing: 0.02em;
+	color: var(--wp--preset--color--pine, #515f51);
+	text-decoration: none;
+	white-space: nowrap;
+	border-radius: 999px;
+	transition: color 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+		background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section-nav__link:hover {
+	color: var(--wp--preset--color--orange-deep, #9c5212);
+}
+.section-nav__link[aria-current="page"] {
+	background: var(--wp--preset--color--pine, #515f51);
+	color: var(--wp--preset--color--cream, #fff4de);
+}
+.section-nav__link[aria-current="page"]:hover {
+	color: var(--wp--preset--color--cream, #fff4de);
+}
+.section-nav__link:focus-visible {
+	outline: 2px solid var(--wp--preset--color--orange-deep, #9c5212);
+	outline-offset: 2px;
+}
+
+/* ---- Album gallery ----------------------------------------------------- */
+.album-gallery.wp-block-gallery img {
+	border-radius: 5px;
+}
+.album-credit {
+	margin-top: 1rem;
+	color: var(--wp--preset--color--sage, #8f9782);
+}
+
+/* ---- Hero cover --------------------------------------------------------- */
+/* The album photos carry a baked-in scalloped frame; scale up a touch so
+   those edge slivers crop out cleanly on wide viewports. */
+.hero-cover .wp-block-cover__image-background {
+	transform: scale(1.05);
+	transform-origin: center;
+}
+
+/* ---- Hero photo credit ------------------------------------------------- */
+.hero-credit {
+	margin-top: 1.25rem;
+	margin-bottom: 0;
+	font-size: 0.7rem;
+	letter-spacing: 0.04em;
+	color: rgba(255, 244, 222, 0.72); /* cream at low opacity over the scrim */
+}
+
+/* ---- Masthead deco banner: responsive, crisp, never upscaled ----------- */
+.site-deco {
+	width: 100%;
+	margin-block: 0;
+}
+.site-deco a {
+	display: block;
+}
+.site-deco img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-width: 980px; /* the asset's native width; past this it would blur */
+	margin-inline: auto;
+}
+
+/* ---- Footer partner logos ---------------------------------------------- */
+.footer-partner {
+	height: 56px;
+	width: auto;
+	display: block;
+}
+.footer-partner-link {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* ---- Engraved-sign section heading (signature device) ------------------ */
+.is-style-engraved-sign {
+	text-align: center;
+	color: var(--wp--preset--color--pine, #515f51);
+}
+.is-style-engraved-sign::after {
+	content: "";
+	display: block;
+	width: 64px;
+	height: 1px;
+	margin: 0.75rem auto 0;
+	background: var(--wp--preset--color--sage, #8f9782);
+}
+
+/* ---- Flat-paper surfaces: never let blocks grow shadows ----------------- */
+.wp-block-group.is-surface {
+	background: var(--wp--preset--color--beige, #dfdcbc);
+	border: 1px solid var(--wp--preset--color--sage, #8f9782);
+	border-radius: 5px;
+}
+
+/* ---- Contact Form 7 — match the brand ---------------------------------- */
+/* Fields inherit the beige/sage input tokens from theme.json; this widens
+   them to the reading column and gives the submit the pine button treatment. */
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form input[type="url"],
+.wpcf7-form input[type="number"],
+.wpcf7-form textarea {
+	width: 100%;
+	font-family: var(--wp--preset--font-family--goudy, serif);
+	font-size: var(--wp--preset--font-size--medium, 1.0625rem);
+	color: var(--wp--preset--color--pine, #515f51);
+	background: var(--wp--preset--color--beige, #dfdcbc);
+	border: 1px solid var(--wp--preset--color--sage, #8f9782);
+	border-radius: 5px;
+	padding: 0.625rem 0.75rem;
+}
+.wpcf7-form textarea {
+	min-height: 9rem;
+	resize: vertical;
+}
+.wpcf7-form ::placeholder {
+	color: var(--wp--preset--color--pine, #515f51);
+	opacity: 0.75; /* stays ≥4.5:1 pine-on-beige */
+}
+.wpcf7-form label {
+	display: block;
+	margin-bottom: 0.85rem;
+}
+.wpcf7-form .wpcf7-acceptance {
+	display: block;
+	margin: 1rem 0;
+}
+.wpcf7-form input[type="submit"] {
+	font-family: var(--wp--preset--font-family--metropolitain, serif);
+	font-size: var(--wp--preset--font-size--medium, 1.0625rem);
+	letter-spacing: 0.02em;
+	color: var(--wp--preset--color--cream, #fff4de);
+	background: var(--wp--preset--color--pine, #515f51);
+	border: 0;
+	border-radius: var(--wp--preset--border-radius--card, 5px);
+	padding: 0.75rem 2rem;
+	cursor: pointer;
+	transition: background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wpcf7-form input[type="submit"]:hover,
+.wpcf7-form input[type="submit"]:focus-visible {
+	background: var(--wp--preset--color--orange-deep, #9c5212);
+}
+.wpcf7-form input[type="submit"]:disabled {
+	opacity: 0.6;
+	cursor: default;
+}
+/* Validation + response messages: flat, on-brand, no default yellow/red bands. */
+.wpcf7-not-valid-tip {
+	color: var(--wp--preset--color--orange-deep, #9c5212);
+	font-size: var(--wp--preset--font-size--small, 0.875rem);
+}
+.wpcf7-form .wpcf7-not-valid {
+	border-color: var(--wp--preset--color--orange-deep, #9c5212);
+}
+.wpcf7-response-output {
+	border-radius: 5px;
+	border-width: 1px;
+	padding: 0.75rem 1rem;
+	font-size: var(--wp--preset--font-size--small, 0.875rem);
+}
+
+/* ---- Reduced motion ---------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-30T00:00:00Z",
+  "title": "Design System: Marche 1900",
+  "extensions": {
+    "colorMeta": {
+      "pine-green": { "role": "primary", "displayName": "Pine Green", "canonical": "oklch(43% 0.02 150)", "tonalRamp": ["oklch(20% 0.02 150)", "oklch(28% 0.02 150)", "oklch(36% 0.02 150)", "oklch(43% 0.02 150)", "oklch(54% 0.02 150)", "oklch(66% 0.02 150)", "oklch(80% 0.015 150)", "oklch(93% 0.01 150)"] },
+      "sage-green": { "role": "secondary", "displayName": "Sage Green", "canonical": "oklch(63% 0.025 130)", "tonalRamp": ["oklch(30% 0.025 130)", "oklch(40% 0.025 130)", "oklch(50% 0.025 130)", "oklch(63% 0.025 130)", "oklch(72% 0.02 130)", "oklch(82% 0.018 130)", "oklch(90% 0.015 130)", "oklch(96% 0.01 130)"] },
+      "marche-orange": { "role": "tertiary", "displayName": "Marche Orange", "canonical": "oklch(70% 0.14 55)", "tonalRamp": ["oklch(40% 0.10 55)", "oklch(50% 0.12 55)", "oklch(60% 0.13 55)", "oklch(70% 0.14 55)", "oklch(78% 0.12 55)", "oklch(86% 0.09 55)", "oklch(92% 0.06 55)", "oklch(97% 0.03 55)"] },
+      "sage-beige": { "role": "neutral", "displayName": "Sage-Beige", "canonical": "oklch(89% 0.03 105)", "tonalRamp": ["oklch(40% 0.03 105)", "oklch(52% 0.03 105)", "oklch(64% 0.03 105)", "oklch(76% 0.03 105)", "oklch(83% 0.03 105)", "oklch(89% 0.03 105)", "oklch(94% 0.02 105)", "oklch(98% 0.01 105)"] },
+      "warm-cream": { "role": "neutral", "displayName": "Warm Cream", "canonical": "oklch(96% 0.03 90)", "tonalRamp": ["oklch(50% 0.03 90)", "oklch(62% 0.03 90)", "oklch(74% 0.03 90)", "oklch(84% 0.03 90)", "oklch(90% 0.03 90)", "oklch(96% 0.03 90)", "oklch(98% 0.015 90)", "oklch(99% 0.008 90)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Metropolitain)", "purpose": "Page titles and hero lettering. Art Nouveau signage face; titles only." },
+      "heading": { "displayName": "Heading (Metropolitain)", "purpose": "Section titles, often paired with engraved-sign ornament." },
+      "body": { "displayName": "Body (Goudy Bookletter 1911)", "purpose": "All running text, descriptions, and form fields. Never set titles in this." },
+      "label": { "displayName": "Label (Metropolitain)", "purpose": "Nav links, language switcher, short field labels (<=4 words)." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Gentle ease-out for link/hover color and state transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "980px" },
+      { "name": "lg", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Full-width pine-green band with cream Metropolitain links; active item turns Marche Orange.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Accueil</a><a class=\"ds-nav-active\" href=\"#\">Le Marché</a><a href=\"#\">Associations</a><a href=\"#\">Médias</a><a href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: center; gap: 60px; height: 60px; background: #515f51; } .ds-nav a { font-family: 'metropolitain', 'Limelight', Georgia, serif; font-size: 18px; color: #fff4de; text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-nav a:hover, .ds-nav a:focus-visible { color: #e88335; outline: none; } .ds-nav-active { color: #e88335 !important; }"
+    },
+    {
+      "name": "Surface Card",
+      "kind": "card",
+      "refersTo": "surface-card",
+      "description": "Flat sage-beige panel on the cream page; tonal step plus optional hairline pine border. No shadow.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Marché aux oiseaux</h3><p class=\"ds-card-body\">Le rendez-vous des éleveurs et amateurs, chaque 15 août sur la grand-place.</p></div>",
+      "css": ".ds-card { background: #dfdcbc; border: 1px solid #515f51; border-radius: 5px; padding: 24px; max-width: 360px; } .ds-card-title { font-family: 'metropolitain', 'Limelight', Georgia, serif; font-weight: 400; font-size: 1.25rem; color: #8f9782; margin: 0 0 12px; } .ds-card-body { font-family: 'goudy', 'Goudy Bookletter 1911', Georgia, serif; font-size: 17px; line-height: 1.6; color: #515f51; margin: 0; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Sage-beige fill, no border at rest, 5px radius, Goudy text; gains a visible focus ring (modernization fix).",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Nom</label><input class=\"ds-input\" id=\"ds-name\" type=\"text\" placeholder=\"Votre nom\">",
+      "css": ".ds-label { display: block; font-family: 'metropolitain', 'Limelight', Georgia, serif; font-size: 0.9375rem; text-transform: uppercase; letter-spacing: 0.02em; color: #515f51; margin: 0 0 6px; } .ds-input { background: #dfdcbc; border: none; border-radius: 5px; padding: 10px 12px; width: 260px; font-family: 'goudy', 'Goudy Bookletter 1911', Georgia, serif; font-size: 16px; color: #515f51; } .ds-input::placeholder { color: #6f7a6a; } .ds-input:focus-visible { outline: 2px solid #e88335; outline-offset: 2px; }"
+    },
+    {
+      "name": "Section Heading (Engraved Sign)",
+      "kind": "custom",
+      "refersTo": "heading",
+      "description": "Signature device: centered Metropolitain title in sage green, the site's 'engraved sign' look.",
+      "html": "<h2 class=\"ds-sign\">Le Programme</h2>",
+      "css": ".ds-sign { font-family: 'metropolitain', 'Limelight', Georgia, serif; font-weight: 400; font-size: clamp(1.5rem, 3vw, 1.75rem); color: #8f9782; text-align: center; letter-spacing: 0.01em; margin: 0 0 24px; }"
+    },
+    {
+      "name": "Language Switcher",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "FR/NL parity toggle; active language in pine, inactive in sage.",
+      "html": "<div class=\"ds-lang\"><a class=\"ds-lang-active\" href=\"#\">FR</a><span aria-hidden=\"true\">·</span><a href=\"#\">NL</a></div>",
+      "css": ".ds-lang { display: inline-flex; align-items: center; gap: 8px; font-family: 'metropolitain', 'Limelight', Georgia, serif; font-size: 15px; } .ds-lang a { text-decoration: none; color: #8f9782; transition: color 0.2s cubic-bezier(0.22,1,0.36,1); } .ds-lang a:hover, .ds-lang a:focus-visible { color: #e88335; outline: none; } .ds-lang-active { color: #515f51 !important; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Belle Époque Village Green",
+    "overview": "Marche 1900 is the website of a turn-of-the-century heritage market in the Ardennes town of Marche-en-Famenne. The visual system is built around a single image: a sunlit village green during a 1900s summer fête. Muted pine and sage greens stand in for the trees and lawns; warm cream is the dust of the square and the paper of a vintage program; a single warm orange is the bunting and the late-afternoon light. Over all of it sits the lettering of the era: Hector Guimard's Paris Métro signage (Metropolitain) for every title and sign, and Goudy Bookletter 1911 for the running text. The system is quiet and earthy on purpose; authenticity comes from real period typography, muted natural color, and generous calm, never from costume-drama props.",
+    "keyCharacteristics": [
+      "Muted heritage greens + warm cream, with a single rare orange accent",
+      "Period typography: Metropolitain (Art Nouveau display) over Goudy Bookletter 1911 (1911 serif)",
+      "Flat, tonal depth: cream → sage-beige → hairline green borders, no drop shadows",
+      "Centered, calm, low-density composition; bilingual FR/NL at parity",
+      "Earthy and authentic, never corporate, never kitsch"
+    ],
+    "rules": [
+      { "name": "The Rare Orange Rule", "body": "Marche Orange (#e88335) is an interaction color, never a decoration. It appears only on the active or hovered element, never as a fill, a heading color, or a band. If more than one orange thing is visible at rest, remove all but the active one.", "section": "colors" },
+      { "name": "The Two-Green Rule", "body": "Pine Green is for reading (body, structure, borders); Sage Green is for labelling (titles, signs). Don't set body copy in sage, and don't set titles in pine.", "section": "colors" },
+      { "name": "The Signage-Only Rule", "body": "Metropolitain is signage, not text. Use it for titles, navigation, and labels of four words or fewer. Running copy is always Goudy.", "section": "typography" },
+      { "name": "The Period-Fidelity Rule", "body": "Both faces are early-1900s designs and must stay legible. Don't squeeze tracking on Metropolitain to decorate, and don't drop Goudy below ~16px for body.", "section": "typography" },
+      { "name": "The Flat-Paper Rule", "body": "Surfaces are paper on a table, not cards floating above one. No box-shadow, ever. To separate a panel, change its fill to sage-beige and/or add a 1px Pine Green border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the two-green + cream + rare-orange palette (Pine #515f51 text/structure, Sage #8f9782 titles, Cream #fff4de page, Sage-Beige #dfdcbc surfaces, Orange #e88335 active/hover only).",
+      "Do set every title, nav item, and label in Metropolitain and every paragraph in Goudy Bookletter 1911.",
+      "Do keep surfaces flat: tonal fills and 1px green borders for separation, never shadows.",
+      "Do bump body text to at least ~16–17px and cap measure at 65–75ch.",
+      "Do add visible keyboard focus states and prefers-reduced-motion fallbacks; target WCAG 2.1 AA contrast.",
+      "Do treat FR and NL as equals: any layout must flex for both languages' text lengths."
+    ],
+    "donts": [
+      "Don't ship the generic SaaS / website-builder template look: no cream-bg-plus-gradient hero, no grid of identical icon-heading-text cards.",
+      "Don't reproduce the dated, cramped feel: no fixed 980px desktop-only layout, no sub-16px body text, no busy heavy textures.",
+      "Don't drift corporate/cold: no corporate blue, no sterile business stock photography with no local character.",
+      "Don't descend into theme-park kitsch: no faux parchment, ornate gold scrollwork, or fake-vintage gimmicks.",
+      "Don't set body copy in Metropolitain or in Sage Green, and don't use orange as a fill or heading color.",
+      "Don't add box-shadow, gradient text, or side-stripe borders."
+    ]
+  }
+}
