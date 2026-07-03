@@ -41,6 +41,7 @@
 							"fontStyle": "normal",
 							"fontDisplay": "swap",
 							"src": [
+								"file:./assets/fonts/metropolitain-webfont.woff2",
 								"file:./assets/fonts/metropolitain-webfont.woff",
 								"file:./assets/fonts/metropolitain-webfont.ttf"
 							]
@@ -58,6 +59,7 @@
 							"fontStyle": "normal",
 							"fontDisplay": "swap",
 							"src": [
+								"file:./assets/fonts/goudybookletter1911-webfont.woff2",
 								"file:./assets/fonts/goudybookletter1911-webfont.woff",
 								"file:./assets/fonts/goudybookletter1911-webfont.ttf"
 							]
@@ -224,7 +226,7 @@
 				}
 			},
 			"caption": {
-				"color": { "text": "var(--wp--preset--color--sage)" },
+				"color": { "text": "var(--wp--preset--color--pine)" },
 				"typography": { "fontSize": "var(--wp--preset--font-size--small)" }
 			}
 		},
@@ -249,7 +251,7 @@
 					"fontFamily": "var(--wp--preset--font-family--goudy)",
 					"fontStyle": "italic"
 				},
-				"color": { "text": "var(--wp--preset--color--sage)" }
+				"color": { "text": "var(--wp--preset--color--pine)" }
 			},
 			"core/navigation": {
 				"typography": {

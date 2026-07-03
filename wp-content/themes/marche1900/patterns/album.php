@@ -10,6 +10,7 @@
 
 // Imported event photos (media library attachment IDs), in display order.
 $marche1900_album = range( 2392, 2414 );
+$marche1900_total = count( $marche1900_album );
 ?>
 <!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--70)">
@@ -24,12 +25,22 @@ $marche1900_album = range( 2392, 2414 );
 	<!-- wp:gallery {"columns":3,"imageCrop":true,"linkTo":"none","sizeSlug":"large","className":"album-gallery","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
 	<figure class="wp-block-gallery has-nested-images columns-3 is-cropped album-gallery wp-block-gallery-is-layout-flex" style="margin-top:var(--wp--preset--spacing--50)">
 		<?php
-		foreach ( $marche1900_album as $marche1900_id ) :
+		foreach ( $marche1900_album as $marche1900_index => $marche1900_id ) :
 			$marche1900_img = wp_get_attachment_image(
 				$marche1900_id,
 				'large',
 				false,
-				array( 'class' => 'wp-image-' . $marche1900_id )
+				array(
+					'class' => 'wp-image-' . $marche1900_id,
+					// Unique per position so screen readers don't hear 23 identical
+					// captions; a specific per-photo description isn't available here.
+					'alt'   => sprintf(
+						/* translators: 1: photo number, 2: total number of photos */
+						__( 'Marché 1900 à Marche-en-Famenne — photo %1$d sur %2$d', 'marche1900' ),
+						$marche1900_index + 1,
+						$marche1900_total
+					),
+				)
 			);
 			if ( '' === $marche1900_img ) {
 				continue;
