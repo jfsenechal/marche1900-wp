@@ -1,0 +1,13 @@
+{
+  "name": "marche1900-visual-check",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Headless-Chrome responsive smoke check for the marche1900 block theme.",
+  "scripts": {
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "puppeteer-core": "^23"
+  }
+}
