@@ -9,6 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// SEO, Open Graph, Twitter Card, hreflang and JSON-LD (no SEO plugin).
+require_once get_template_directory() . '/inc/seo.php';
+
 if ( ! function_exists( 'marche1900_setup' ) ) :
 	/**
 	 * Theme setup. Most configuration lives in theme.json; this covers the rest.
